@@ -1,0 +1,15 @@
+<!--componets/LadderDiagram/LadderDiagram.wxml-->
+<view class="Ladder-diagram-container">
+    <view class="middle-line"></view>
+    <scroll-view scroll-y="true" class="scroll" id="scroller" style="height:calc(100vh - 134rpx);">
+        <view class="Ladder-diagram-box">
+        <view class="Ladder-diagram-item {{item.brand}}" wx:for="{{CPUData}}" wx:key="index">
+            <view class="text-box box-{{item.brand}}">
+                <view class="{{item.brand}}-text" >
+                    <text class="brand-{{item.brand}}">{{item.text}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    </scroll-view>
+</view>

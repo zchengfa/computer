@@ -1,0 +1,26 @@
+/* componets/brand.wxss */
+@import '../../common/scss/common.scss';
+.btn-container{
+    -webkit-overflow-scrolling: touch;
+    .update-time{
+        display: block;
+        width: 100%;
+        padding: 20rpx 0;
+        text-align: center;
+        font-size: $minFontSize;
+        color: $grayColor;
+    }
+    .btn-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .btn{
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            flex: 1;
+            height: 60rpx;
+            line-height: 60rpx;
+            text-align: center;
+            color: #fff;
+        }
+    }
+}

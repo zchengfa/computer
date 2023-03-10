@@ -1,0 +1,5 @@
+<!--pages/indexDetail/desktopCPU.wxml-->
+<view>
+    <brand></brand>
+    <LadderDiagram></LadderDiagram>
+</view>

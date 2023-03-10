@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<view class="container">
+ <view class="menu-item" wx:for="{{rankMenu}}" wx:key="index" data-path="{{item.detailPath}}" bindtap="toPageDetail">
+    <image class="item-img" src="{{item.iconPath}}" mode="aspectFit"/>
+    <text class="menu">{{item.text}}</text>
+ </view>
+ <view class="menu-item"></view>
+</view>
