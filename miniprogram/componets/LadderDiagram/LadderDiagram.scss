@@ -19,7 +19,7 @@
     }
     
     .AMD-text,.intel-text{
-       padding: 0 20rpx;
+      
        border-radius: 10rpx;
     }
     .text-box{
@@ -51,12 +51,22 @@
         flex-direction: row-reverse;
     }
     .brand-AMD,.brand-intel{
+        position: absolute;
+        top:0;
         display: inline-block;
+        width: 374rpx;
         height: 100%;
         transform-origin: 0;
         transform: scale(.8);
+        z-index: 999;
     }
     .brand-intel{
+        right: 20rpx;
         transform-origin: right;
+        text-align: right;
+    }
+    .brand-box{
+        position: relative;
+        width: 60%;
     }
 }
