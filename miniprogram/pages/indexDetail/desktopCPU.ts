@@ -1,32 +1,43 @@
 // pages/indexDetail/desktopCPU.ts
+import { desktop_cpu } from '../../common/json/rankData'
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        desktop_cpu:<cpuArr[]>desktop_cpu
     },
+    alterData:function() {
+        let _cpuData:cpuArr[] = this.data.desktop_cpu
+        let maxScore:number = _cpuData[0]['score']
+        _cpuData.map((item:any)=>{
+            item.progress = Math.floor((item.score/maxScore)*96)
+        })
 
+        this.setData({
+            desktop_cpu:_cpuData
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad() {
-
+        
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
-
+        this.alterData()
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+       
     },
 
     /**

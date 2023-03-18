@@ -12,3 +12,11 @@ interface rankMenu {
   readonly  text:String,
             detailPath?:String
 }
+
+interface cpuArr {
+    brand:String,
+    text:String,
+    rank:number,
+    score:number,
+    progress?:number
+}
