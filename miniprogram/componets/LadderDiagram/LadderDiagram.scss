@@ -1,6 +1,7 @@
 /* componets/LadderDiagram/LadderDiagram.wxss */
 @import '../../common/scss/common.scss';
 .Ladder-diagram-container{
+    -webkit-overflow-scrolling: touch;
     .middle-line{
         position: absolute;
         left: 50%;
