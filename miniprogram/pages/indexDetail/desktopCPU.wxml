@@ -1,5 +1,6 @@
 <!--pages/indexDetail/desktopCPU.wxml-->
 <view>
     <brand></brand>
-    <LadderDiagram CPUData="{{desktop_cpu}}"></LadderDiagram>
+    <LadderDiagram CPUData="{{desktop_cpu}}" bindchangeAniStatus="changeAniStatus"></LadderDiagram>
+    
 </view>

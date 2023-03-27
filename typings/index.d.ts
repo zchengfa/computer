@@ -18,5 +18,6 @@ interface cpuArr {
     text:String,
     rank:number,
     score:number,
-    progress?:number
+    progress?:number,
+    canAnimate?:boolean
 }

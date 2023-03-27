@@ -1,15 +1,16 @@
 <!--componets/LadderDiagram/LadderDiagram.wxml-->
 <view class="Ladder-diagram-container">
     <view class="middle-line"></view>
-    <scroll-view scroll-y="{{canScroll}}" class="scroll" id="scroller" scroll-with-animation="true" style="height:calc(100vh - 134rpx);" scroll-top="{{scrollTop}}" bindtouchstart="dragStart" bindtouchend="dragEnd">
+    <scroll-view scroll-y="{{canScroll}}" class="scroll" id="scroller" scroll-with-animation="true" style="height:calc(100vh - 134rpx);" scroll-top="{{scrollTop}}" bindtouchstart="dragStart" bindtouchend="dragEnd" bindscroll="scroll" bingtouchmove="move">
         <view class="Ladder-diagram-box">
-        <view class="Ladder-diagram-item {{item.brand}}" wx:for="{{CPUData}}" wx:key="index"  id="t{{index}}">
-            <view class="text-box box-{{item.brand}}">
-                <view style="width: {{item.progress + '%'}}; transition: width .5s ease-in;" class="{{item.brand}}-text {{item.brand}}-text-{{index}} brand-box brand-box-{{index}}" data-el="{{item.brand}}-text-{{index}}" data-width="{{item.progress}}">
-                    <text class="brand-{{item.brand}}">{{index}}-{{item.text}}</text>
+            <view class="Ladder-diagram-item {{item.brand}}" wx:for="{{CPUData}}" wx:key="index"  id="t{{index}}">
+                <view class="text-box box-{{item.brand}}">
+                    <view style="width: {{item.progress + '%'}}; transition: width .5s ease-in;" class="{{item.brand}}-text {{item.brand}}-text-{{index}} brand-box brand-box-{{index}}" data-el="{{item.brand}}-text-{{index}}" data-width="{{item.progress}}">
+                        <text class="brand-{{item.brand}}">{{index}}-{{item.text}}</text>
+                    </view>
                 </view>
             </view>
         </view>
-    </view>
     </scroll-view>
+    <BackTop bindtap="backTop" class="back-top" backImage="/images/back_top.png"></BackTop>
 </view>

@@ -13,11 +13,21 @@ Page({
         let maxScore:number = _cpuData[0]['score']
         _cpuData.map((item:any)=>{
             item.progress = Math.floor((item.score/maxScore)*96)
+            item.canAnimate = true
         })
 
         this.setData({
             desktop_cpu:_cpuData
         })
+    },
+    changeAniStatus(e:any){
+       
+        let _cpuData = this.data.desktop_cpu
+        _cpuData[e.detail.index].canAnimate = e.detail.status
+        this.setData({
+            desktop_cpu:_cpuData
+        })
+       
     },
     /**
      * 生命周期函数--监听页面加载
