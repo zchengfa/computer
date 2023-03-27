@@ -35,32 +35,34 @@ Component({
      */
     methods: {
         backTop(){
-          this.setData({
-              canScroll:true,
-              
-          })  
-         if(this.data.canScroll){
-             this.setData({
-                 scrollTop:0
-             })
-         }
-         let arr = this.data.queryArr.slice(0,this.data.queryIndex)
-         
-         arr.map((item:any,index)=>{
-             this.animate('.'+item.dataset.el,[
-                { width: 0, opacity:0 },
-                { width: this.data.queryArr[index].dataset.width + '%', opacity:1 }   
-             ],300)
-             
-         })
-         let timer = setTimeout(()=>{
-             this.setData({
-                 canScroll:false,
-                 queryIndex:0
-             })
-             
-             clearTimeout(timer)
-         },0)
+            if(this.data.queryIndex !== 0){
+                this.setData({
+                    canScroll:true,
+                    
+                })  
+               if(this.data.canScroll){
+                   this.setData({
+                       scrollTop:0
+                   })
+               }
+               let arr = this.data.queryArr.slice(0,this.data.queryIndex)
+               
+               arr.map((item:any,index)=>{
+                   this.animate('.'+item.dataset.el,[
+                      { width: 0, opacity:0 },
+                      { width: this.data.queryArr[index].dataset.width + '%', opacity:1 }   
+                   ],300)
+                   
+               })
+               let timer = setTimeout(()=>{
+                   this.setData({
+                       canScroll:false,
+                       queryIndex:0
+                   })
+                   
+                   clearTimeout(timer)
+               },0)
+            }
         },
        dragStart(e:any){
            
