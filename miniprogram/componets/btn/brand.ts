@@ -6,17 +6,17 @@ Component({
     properties: {
         updateTime:{
             type:String,
-            value:"2023-03-10"
+            value:"YYYY-MM-dd"
         },
         btnArray:{
             type:Array,
             value:[
                 {
-                    name:"intel",
+                    name:"标题一",
                     btnColor:"#6685dc"
                 },
                 {
-                    name:"AMD",
+                    name:"标题二",
                     btnColor:"#e44c33"
                 }
             ]

@@ -45,7 +45,7 @@ export const desktop_cpu =[
         "brand":"AMD",
         "text":"AMD 锐龙9 7950X3D（游戏）",
         "rank":8,
-        "score":1461063
+        "score":1460600
     },
     {
         "brand":"intel",

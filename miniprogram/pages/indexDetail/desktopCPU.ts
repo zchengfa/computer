@@ -1,24 +1,52 @@
 // pages/indexDetail/desktopCPU.ts
 import { desktop_cpu } from '../../common/json/rankData'
+type btn ={
+    name:string,
+    btnColor:string
+}
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        desktop_cpu:<cpuArr[]>desktop_cpu
+        desktop_cpu:<cpuArr[]>desktop_cpu,
+        btnArray:<btn[]>[
+            {
+                "name":"intel",
+                "btnColor":"#6685dc"
+            },
+            {
+                "name":"AMD",
+                "btnColor":"#e44c33"
+            }
+        ]
     },
-    alterData:function() {
+    alterData:function(index:number = 0,direction:number = 1) {
+        
         let _cpuData:cpuArr[] = this.data.desktop_cpu
-        let maxScore:number = _cpuData[0]['score']
-        _cpuData.map((item:any)=>{
-            item.progress = Math.floor((item.score/maxScore)*96)
-            item.canAnimate = true
+        let maxScore:number = 0
+        
+        if(direction){
+            maxScore = _cpuData[index]['score']
+        }
+        else{
+           if(index > 0){
+                maxScore = _cpuData[index - 1]['score']
+           }
+           else{
+                maxScore = _cpuData[index]['score']
+           } 
+           
+        }
+        _cpuData.map((item:any,itemIndex:number)=>{
+            itemIndex >= index ? item.progress = Math.floor((item.score/maxScore)*96) : item.progress = 0
+            item.canAnimate = true 
         })
 
         this.setData({
             desktop_cpu:_cpuData
-        })
+        })  
     },
     changeAniStatus(e:any){
        
@@ -27,6 +55,10 @@ Page({
         this.setData({
             desktop_cpu:_cpuData
         })
+       
+    },
+    changeScoreRatio(e:any){
+        this.alterData(e.detail.index,e.detail.direction)
        
     },
     /**

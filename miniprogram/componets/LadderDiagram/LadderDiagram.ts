@@ -16,8 +16,6 @@ Component({
      */
     data: {
       canScroll:<boolean>false,
-      begintimestamp:<number>0,
-      endtimestamp:<number>0,
       scrollTop:<number>0,
       queryArr:<any[]>[],
       queryIndex:<number>0,
@@ -34,6 +32,7 @@ Component({
      * 组件的方法列表
      */
     methods: {
+      
         backTop(){
             if(this.data.queryIndex !== 0){
                 this.setData({
@@ -115,7 +114,8 @@ Component({
                                 canScroll:false,
                                 queryIndex: this.data.queryIndex + 1,
                                 firstShow:false
-                            })   
+                            })  
+                            this.triggerEvent('changeScoreRatio',{'index':this.data.queryIndex,'direction':1}) 
                         }.bind(this))
                        
                     }
@@ -144,11 +144,13 @@ Component({
                 else{
                     if(!this.data.firstShow){
                        if(this.data.queryIndex > 0){
-                        this.setData({
-                            scrollTop:(this.data.queryIndex - 1) * this.data.distance,
-                            queryIndex:this.data.queryIndex - 1
-                        })
+                            this.setData({
+                                scrollTop:(this.data.queryIndex - 1) * this.data.distance,
+                                queryIndex:this.data.queryIndex - 1
+                            })
                        }
+                       this.triggerEvent('changeScoreRatio',{'index':this.data.queryIndex,'direction':0})
+                       
                         this.animate('.'+ this.data.queryArr[this.data.queryIndex].dataset.el,[
                             { width: 0, opacity:0 },
                             { width: this.data.queryArr[this.data.queryIndex].dataset.width + '%', opacity:1 }
@@ -156,7 +158,7 @@ Component({
                             this.setData({
                                 lastShow:false,
                                 canScroll:false
-                            })   
+                            }) 
                         }.bind(this))
                        
                     }
@@ -174,11 +176,12 @@ Component({
                     }
                 }
                
+               
             }
             
        },
        scroll(e:any){
-          
+       
             if(this.data.isLongTouch){
             
                 if(e.detail.deltaY < 0){
