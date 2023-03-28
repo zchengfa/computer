@@ -4,10 +4,17 @@ Component({
      * 组件的属性列表
      */
     properties: {
-        CPUData:{
+        rankData:{
             type:Array,
-            value:[]
-           
+            value:[]   
+        },
+        leftBgColor:{
+            type:String,
+            value:''
+        },
+        rightBgColor:{
+            type:String,
+            value:''
         }
     },
 
@@ -58,7 +65,8 @@ Component({
                        canScroll:false,
                        queryIndex:0
                    })
-                   
+                   this.triggerEvent('backStatus')
+                  
                    clearTimeout(timer)
                },0)
             }
@@ -188,7 +196,7 @@ Component({
                     const query = wx.createSelectorQuery().in(this).select('.'+this.data.queryArr[this.data.queryIndex].dataset.el)
                     query.boundingClientRect((res:any)=>{
                         if(res.top <= 68){
-                            if(this.properties.CPUData[this.data.queryIndex].canAnimate){
+                            if(this.properties.rankData[this.data.queryIndex].canAnimate){
                             
                                 this.animate('.'+ this.data.queryArr[this.data.queryIndex].dataset.el,[
                                     { width: this.data.queryArr[this.data.queryIndex].dataset.width + '%', opacity:1 },
@@ -220,7 +228,7 @@ Component({
                             
                             if(res.bottom > 68){
                                
-                                if(!this.properties.CPUData[this.data.queryIndex - 1].canAnimate){
+                                if(!this.properties.rankData[this.data.queryIndex - 1].canAnimate){
                                 
                                     this.animate('.'+ this.data.queryArr[this.data.queryIndex - 1].dataset.el,[
                                         { width: 0, opacity:0 },
@@ -266,6 +274,8 @@ Component({
                 })
             
             }).exec()
+
+           
         }
     }
 })

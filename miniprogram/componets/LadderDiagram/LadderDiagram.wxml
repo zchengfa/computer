@@ -3,9 +3,9 @@
     <view class="middle-line"></view>
     <scroll-view scroll-y="{{canScroll}}" class="scroll" id="scroller" scroll-with-animation="true" style="height:calc(100vh - 134rpx);" scroll-top="{{scrollTop}}" bindtouchstart="dragStart" bindtouchend="dragEnd" bindscroll="scroll" >
         <view class="Ladder-diagram-box">
-            <view class="Ladder-diagram-item {{item.brand}}" wx:for="{{CPUData}}" wx:key="index">
+            <view class="Ladder-diagram-item {{item.brand}}" wx:for="{{rankData}}" wx:key="index">
                 <view class="text-box box-{{item.brand}}">
-                    <view style="width: {{item.progress + '%'}}; transition: width .5s ease-in;" class="{{item.brand}}-text {{item.brand}}-text-{{index}} brand-box brand-box-{{index}}" data-el="{{item.brand}}-text-{{index}}" data-width="{{item.progress}}">
+                    <view style="width: {{item.progress + '%'}}; transition: width .5s ease-in;background: {{item.brand === 'intel' || item.brand === 'NVIDIA' ? leftBgColor : rightBgColor}}" class="{{item.brand}}-text {{item.brand}}-text-{{index}} brand-box brand-box-{{index}}" data-el="{{item.brand}}-text-{{index}}" data-width="{{item.progress}}">
                         <text class="brand-{{item.brand}}">{{item.text}}</text>
                     </view>
                 </view>

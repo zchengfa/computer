@@ -2,7 +2,7 @@
     "pages": [
         "pages/index/index",
         "pages/arrange/arrange",
-        "pages/indexDetail/desktopCPU"
+        "pages/indexDetail/ladderDiagramRank"
     ],
     "tabBar": {
         "custom": true,

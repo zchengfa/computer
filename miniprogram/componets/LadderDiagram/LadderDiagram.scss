@@ -21,7 +21,7 @@
     .Ladder-diagram-box{
         padding-bottom: 50rpx;
     }
-    .AMD-text,.intel-text{
+    .AMD-text,.intel-text,.NVIDIA-text{
       
        border-radius: 10rpx;
     }
@@ -34,10 +34,10 @@
         height: 100%;
         background: $AMDlinearGradientColor;
     }
-    .intel-text{
+    .intel-text,.NVIDIA-text{
         background: $INTELlinearGradientColor;
     }
-    .AMD,.intel{
+    .AMD,.intel,.NVIDIA{
         display: flex;
         align-items: center;
         padding-top: 30rpx;
@@ -49,11 +49,11 @@
     .AMD{
         justify-content: flex-end;
     }
-    .box-intel{
+    .box-intel,.box-NVIDIA{
         display: flex;
         flex-direction: row-reverse;
     }
-    .brand-AMD,.brand-intel{
+    .brand-AMD,.brand-intel,.brand-NVIDIA{
         position: absolute;
         top:0;
         display: inline-block;
@@ -67,7 +67,7 @@
     .brand-AMD{
         left: 20rpx;
     }
-    .brand-intel{
+    .brand-intel,.brand-NVIDIA{
         right: 20rpx;
         transform-origin: right;
         text-align: right;

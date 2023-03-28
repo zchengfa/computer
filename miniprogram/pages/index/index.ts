@@ -8,22 +8,26 @@ Page({
     {
         iconPath:'../../images/CPU.png',
         text:'桌面CPU天梯图',
-        detailPath:'../indexDetail/desktopCPU'
+        detailPath:'../indexDetail/ladderDiagramRank',
+        type:'desktop_cpu'
     },
     {
         iconPath:'../../images/GPU.png',
         text:'桌面GPU天梯图',
-        detailPath:''
+        detailPath:'../indexDetail/ladderDiagramRank',
+        type:'desktop_Gpu'
     },
     {
         iconPath:'../../images/notebook.png',
         text:'笔记本CPU天梯图',
-        detailPath:''
+        detailPath:'../indexDetail/ladderDiagramRank',
+        type:'notebook_cpu'
     },
     {
         iconPath:'../../images/phone_CPU.png',
         text:'手机CPU天梯图',
-        detailPath:''
+        detailPath:'',
+        type:''
     },
     {
         iconPath:'../../images/phone_GPU.png',
@@ -46,7 +50,7 @@ Page({
   },
   toPageDetail: function(e:any){
     wx.navigateTo({
-        url:e.currentTarget.dataset.path
+        url:e.currentTarget.dataset.path + '?type=' + e.currentTarget.dataset.type
     })
   },
  

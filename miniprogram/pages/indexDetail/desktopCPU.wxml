@@ -1,6 +1,0 @@
-<!--pages/indexDetail/desktopCPU.wxml-->
-<view>
-    <brand updateTime="2023-03-10" btnArray="{{btnArray}}"></brand>
-    <LadderDiagram CPUData="{{desktop_cpu}}" bindchangeAniStatus="changeAniStatus" bindchangeScoreRatio="changeScoreRatio"></LadderDiagram>
-    
-</view>
