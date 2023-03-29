@@ -1,14 +1,23 @@
 <!--componets/LadderDiagram/LadderDiagram.wxml-->
 <view class="Ladder-diagram-container">
-    <view class="middle-line"></view>
+    <view class="{{brandNumber <= 2 ? ' line middle-line' : ' line side-line'}}"></view>
     <scroll-view scroll-y="{{canScroll}}" class="scroll" id="scroller" scroll-with-animation="true" style="height:calc(100vh - 134rpx);" scroll-top="{{scrollTop}}" bindtouchstart="dragStart" bindtouchend="dragEnd" bindscroll="scroll" >
-        <view class="Ladder-diagram-box">
+        <view class="Ladder-diagram-box" wx:if="{{brandNumber === 2}}">
             <view class="Ladder-diagram-item {{item.brand}}" wx:for="{{rankData}}" wx:key="index">
                 <view class="text-box box-{{item.brand}}">
-                    <view style="width: {{item.progress + '%'}}; transition: width .5s ease-in;background: {{item.brand === 'intel' || item.brand === 'NVIDIA' ? leftBgColor : rightBgColor}}" class="{{item.brand}}-text {{item.brand}}-text-{{index}} brand-box brand-box-{{index}}" data-el="{{item.brand}}-text-{{index}}" data-width="{{item.progress}}">
+                    <view style="width: {{item.progress + '%'}}; transition: width .5s ease-in;background: {{item.brand === 'intel' || item.brand === 'NVIDIA' ? leftBgColor : rightBgColor}}" class="text-fa {{item.brand}}-text-{{index}} brand-box brand-box-{{index}}" data-el="{{item.brand}}-text-{{index}}" data-width="{{item.progress}}">
                         <text class="brand-{{item.brand}}">{{item.text}}</text>
                     </view>
                 </view>
+            </view>
+        </view>
+        <view class="Ladder-diagram-box" wx:else>
+            <view class="Ladder-diagram-item" wx:for="{{rankData}}" wx:key="index">
+               <view class="text-box-side">
+                <view style="width: {{item.progress + '%'}}; transition: width .5s ease-in;background:red" class="text-fa {{item.brand}}-text-{{index}} brand-box brand-box-{{index}}" data-el="{{item.brand}}-text-{{index}}" data-width="{{item.progress}}">
+                        <text class="brand-{{item.brand}} brand">{{item.text}}</text>
+                    </view>
+               </view> 
             </view>
         </view>
     </scroll-view>

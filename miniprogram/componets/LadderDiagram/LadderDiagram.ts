@@ -15,6 +15,10 @@ Component({
         rightBgColor:{
             type:String,
             value:''
+        },
+        multiColor:{
+            type:Object,
+            value:{}
         }
     },
 
@@ -33,7 +37,9 @@ Component({
       paddingTop:<number>0,
       distance:<number>0,
       isLongTouch:<boolean>false,
-      timer:<number>0
+      timer:<number>0,
+      brandNumber:<number>2,
+      multiBrandBgColor:<any>{}
     },
     /**
      * 组件的方法列表
@@ -254,26 +260,45 @@ Component({
                 }
             }
        },
-       getTimestamp(){
-           return new Date().getTime()
+       getBoxInfo(){
+           //获取scroll-view中子盒子的信息
+           const query = wx.createSelectorQuery().in(this).selectAll('.brand-box')
+           query.boundingClientRect((res:any)=>{
+              
+               this.setData({
+                   queryArr:Array.from(res)
+               })
+               this.setData({
+                   distance:this.data.queryArr[1].top - this.data.queryArr[0].top,
+                   paddingTop:this.data.queryArr[1].top - this.data.queryArr[0].top - this.data.queryArr[0].height
+               })
+           
+           }).exec()
+
+           //获取数据中的品牌数
+           let brandArr:String[] = []
+           this.data.rankData.map((item:any)=>{
+               brandArr.indexOf(item.brand) === -1 ? brandArr.push(item.brand) : null
+           })
+           this.setData({
+               brandNumber:brandArr.length
+           })
+
+           //为盒子设置多种默认背景色
+           let color = ['red','gray','green','black']
+           if(this.data.brandNumber > 2 && Object.keys(this.properties.multiColor).length !== brandArr.length){
+                brandArr.map((item:any,index:number)=>{
+                    this.data.multiBrandBgColor[item] = color[index]
+                })
+           }
+           //上面代码待完善
+           
        }
         
     },
     pageLifetimes:{
         show(){
-            //获取scroll-view中子盒子的信息
-            const query = wx.createSelectorQuery().in(this).selectAll('.brand-box')
-            query.boundingClientRect((res:any)=>{
-               
-                this.setData({
-                    queryArr:Array.from(res)
-                })
-                this.setData({
-                    distance:this.data.queryArr[1].top - this.data.queryArr[0].top,
-                    paddingTop:this.data.queryArr[1].top - this.data.queryArr[0].top - this.data.queryArr[0].height
-                })
-            
-            }).exec()
+            this.getBoxInfo()
 
            
         }

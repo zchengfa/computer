@@ -1,7 +1,7 @@
 <!--componets/brand.wxml-->
 <view class="btn-container">
    <text class="update-time">更新时间：{{updateTime}}</text>
-   <view class="btn-box">
+   <view class="btn-box" wx:if="{{showLabel}}">
        <text class="btn" wx:for="{{btnArray}}" wx:key="index" style="background-color:{{item.btnColor}}">{{item.name}}</text>
    </view>
 </view>

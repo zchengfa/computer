@@ -20,6 +20,10 @@ Component({
                     btnColor:"#e44c33"
                 }
             ]
+        },
+        showLabel:{
+            type:Boolean,
+            value:true
         }
     },
 

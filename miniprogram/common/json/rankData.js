@@ -425,8 +425,43 @@ const notebook_cpu = [
     }
 ]
 
+//手机cpu
+const phone_cpu = [
+    {
+        "brand":"Apple",
+        "text":"A16",
+        "rank":1,
+        "score":984461
+    },
+    {
+        "brand":"Apple",
+        "text":"A15",
+        "rank":2,
+        "score":984461
+    },
+    {
+        "brand":"高通",
+        "text":"高通骁龙8 Gen2",
+        "rank":3,
+        "score":984460
+    },
+    {
+        "brand":"联发科",
+        "text":"联发科天玑 9200",
+        "rank":4,
+        "score":984460
+    },
+    {
+        "brand":"华为",
+        "text":"华为海思麒麟 9000",
+        "rank":5,
+        "score":984460
+    }
+]
+
 module.exports = {
     desktop_cpu,
     desktop_Gpu,
-    notebook_cpu
+    notebook_cpu,
+    phone_cpu
 }
