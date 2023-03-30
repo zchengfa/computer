@@ -1,0 +1,12 @@
+/* componets/BackTop/BackTop.wxss */
+.back-top-container{
+    position: absolute;
+    bottom: 100rpx;
+    right: 20rpx;
+    z-index: 1000;
+    .b-t-image{
+        width: 80rpx;
+        height:  80rpx;
+       
+    }
+}

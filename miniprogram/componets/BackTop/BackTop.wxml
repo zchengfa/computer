@@ -1,0 +1,4 @@
+<!--componets/BackTop/BackTop.wxml-->
+<view class="back-top-container">
+    <image class="b-t-image" src="{{backImage}}"/>
+</view>
