@@ -39,7 +39,8 @@ Component({
       isLongTouch:<boolean>false,
       timer:<number>0,
       brandNumber:<number>2,
-      multiBrandBgColor:<any>{}
+      multiBrandBgColor:<any>{},
+      animationThreshold:<number>0
     },
     /**
      * 组件的方法列表
@@ -117,8 +118,8 @@ Component({
             if(this.data.canScroll){
                
                 if(Boolean(this.data.touchDirection)){
-                   
                     if(!this.data.lastShow){
+                        
                         this.animate('.'+ this.data.queryArr[this.data.queryIndex].dataset.el,[
                             { width: this.data.queryArr[this.data.queryIndex].dataset.width + '%', opacity:1 },
                             { width: 0, opacity:0 }
@@ -201,7 +202,7 @@ Component({
                 if(e.detail.deltaY < 0){
                     const query = wx.createSelectorQuery().in(this).select('.'+this.data.queryArr[this.data.queryIndex].dataset.el)
                     query.boundingClientRect((res:any)=>{
-                        if(res.top <= 68){
+                        if(res.top <= this.data.animationThreshold){
                             if(this.properties.rankData[this.data.queryIndex].canAnimate){
                             
                                 this.animate('.'+ this.data.queryArr[this.data.queryIndex].dataset.el,[
@@ -232,7 +233,7 @@ Component({
                         const query = wx.createSelectorQuery().in(this).select('.'+this.data.queryArr[this.data.queryIndex -1].dataset.el)
                         query.boundingClientRect((res:any)=>{
                             
-                            if(res.bottom > 68){
+                            if(res.bottom > this.data.animationThreshold){
                                
                                 if(!this.properties.rankData[this.data.queryIndex - 1].canAnimate){
                                 
@@ -261,6 +262,14 @@ Component({
             }
        },
        getBoxInfo(){
+           //scroll元素距离顶部的距离，用作动画触发的阈值
+           const scrollQ = wx.createSelectorQuery().in(this).select('.scroll')
+           scrollQ.boundingClientRect((res:any)=>{
+               this.setData({
+                   animationThreshold:res.top + 1
+               })
+           }).exec()
+
            //获取scroll-view中子盒子的信息
            const query = wx.createSelectorQuery().in(this).selectAll('.brand-box')
            query.boundingClientRect((res:any)=>{
@@ -285,13 +294,24 @@ Component({
            })
 
            //为盒子设置多种默认背景色
-           let color = ['red','gray','green','black']
+           let defaultColor:string[] = [
+               'linear-gradient(to right, #191718, #201d1f, #262327, #2c2a2f, #313138, #34363d, #363b42, #394046, #3b4348, #3e474a, #414a4b, #454d4d)',
+               'linear-gradient(to right, #920e36, #8e1034, #8b1231, #87142f, #84152d, #87182f, #8a1a30, #8d1d32, #982238, #a2273e, #ad2c45, #b8314b)',
+               'linear-gradient(to right, #a84b16, #ac5217, #b05a17, #b36119, #b7681a, #b86d1c, #b8711e, #b97620, #b77922, #b57d25, #b48028, #b2832b)',
+               'linear-gradient(to right, #0a2b77, #042c84, #022d91, #042d9e, #0d2cab, #0837b5, #0342be, #004dc7, #0061c9, #0072c5, #007fbc, #2b8bb2)',
+               'linear-gradient(to right, #55085d, #5f0a6a, #690d77, #731085, #7d1393, #83189c, #891ca6, #8f21af, #9227b5, #962dba, #9933c0, #9c38c6)'
+            ]
+            , brandColor:any = {}
            if(this.data.brandNumber > 2 && Object.keys(this.properties.multiColor).length !== brandArr.length){
                 brandArr.map((item:any,index:number)=>{
-                    this.data.multiBrandBgColor[item] = color[index]
+                    //默认颜色不够，则会生成随机颜色
+                    defaultColor[index] ? brandColor[item] = defaultColor[index] : brandColor[item] = 'rgba(' + Math.random() * 255 + ',' + Math.random() * 255 + ',' + Math.random() * 255 + ',' + Math.random() * 1 + ')'
                 })
            }
-           //上面代码待完善
+           this.setData({
+               multiBrandBgColor:brandColor
+           })
+           
            
        }
         

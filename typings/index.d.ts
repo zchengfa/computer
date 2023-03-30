@@ -13,7 +13,7 @@ interface rankMenu {
             detailPath?:String
 }
 
-interface cpuArr {
+interface rankArr {
     brand:String,
     text:String,
     rank:number,

@@ -33,7 +33,7 @@
     .text-box,.text-box-side{
         display: flex;
         
-        height: 60rpx;
+        height: 70rpx;
     }
     .text-box{
         width: 48%;
@@ -49,8 +49,8 @@
         padding-top: 30rpx;
         display: flex;
         align-items: center;
-        height: 60rpx;
-        line-height: 60rpx;
+        height: 70rpx;
+        line-height: 70rpx;
         font-size: $minFontSize;
         color: #fff;
     }
@@ -74,7 +74,7 @@
         height: 100%;
         text-shadow: 4rpx 4rpx rgb(35, 34, 36);
         transform-origin: 0;
-        transform: scale(.7);
+        transform: scale(.8);
         z-index: 999;
     }
     .brand-AMD,.brand{

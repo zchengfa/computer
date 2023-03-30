@@ -9,15 +9,15 @@ Page({
      * 页面的初始数据
      */
     data: {
-        rankData:<cpuArr[]>[],
-        leftBgColor:<string>'',
-        rightBgColor:<string>'',
+        rankData:<rankArr[]>[],
+        leftBgColor:<string>'linear-gradient(to right, #446fe4 , #0e54a5)',
+        rightBgColor:<string>'linear-gradient(to right, #b62b15 , #ca6b5c)',
         showLabel:<boolean>true,
         btnArray:<btn[]>[{"name":"intel","btnColor":"#6685dc"},{"name":"AMD","btnColor":"#e44c33"}]
     },
     alterData:function(index:number = 0,direction:number = 1) {
-        console.log(this.data.rankData)
-        let _cpuData:cpuArr[] = JSON.parse(JSON.stringify(this.data.rankData))
+        //console.log(this.data.rankData)
+        let _cpuData:rankArr[] = JSON.parse(JSON.stringify(this.data.rankData))
         let maxScore:number = 0
         
         if(direction){
@@ -33,8 +33,10 @@ Page({
            
         }
         _cpuData.map((item:any,itemIndex:number)=>{
+            
             itemIndex >= index ? item.progress = Math.floor((item.score/maxScore)*96) : item.progress = 0
             item.canAnimate = true 
+            item.rank = itemIndex + 1
         })
 
         this.setData({
@@ -51,7 +53,7 @@ Page({
        
     },
     changeScoreRatio(e:any){
-        this.alterData(e.detail.index,e.detail.direction)
+        this.alterData(e.detail.index,e.detail.direction,e.detail.els)
        
     },
     backStatus(){
@@ -66,14 +68,12 @@ Page({
            case 'desktop_cpu':
                this.setData({
                    rankData:desktop_cpu,
-                   leftBgColor:'linear-gradient(to right, #446fe4 , #0e54a5)',
-                   rightBgColor:'linear-gradient(to right, #b62b15 , #ca6b5c)'
                })
                break;
            case 'desktop_Gpu':
                this.setData({
                    rankData:desktop_Gpu,
-                   leftBgColor: 'linear-gradient(to right, #96d99b , #29a632 , #13821a)',  
+                   leftBgColor: 'linear-gradient(to right, #09884d, #198444, #22803b, #297b31, #2f7728, #307724, #307720, #31771c, #2d7b1d, #287f1e, #22841f, #198820)',  
                    btnArray:[{"name":"NVIDIA","btnColor":"#29a632"},{"name":"AMD","btnColor":"#ca6b5c"}]
                })
                break;
@@ -90,7 +90,7 @@ Page({
                break;
            case 'phone_Gpu':
                this.setData({
-                   rankData:notebook_cpu,
+                   rankData:phone_cpu,
                    showLabel:false
                })
                break;             
