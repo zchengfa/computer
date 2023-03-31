@@ -10,7 +10,8 @@ interface IAppOption {
 interface rankMenu {
   readonly  iconPath:String,
   readonly  text:String,
-            detailPath?:String
+            detailPath?:String,
+            type:String
 }
 
 interface rankArr {

@@ -1,0 +1,13 @@
+<!--componets/Drawer/Drawer.wxml-->
+<view class="drawer-container" capture-catch:tap="close">
+    <view class="drawer-box {{transition ? 'drawer-transition' : null}}">
+        <view wx:if="{{Object.keys(descriptionData).length}}">
+            <view>
+                产品描述
+            </view>
+        </view>
+        <view wx:else class="none">
+            <text>产品数据待完善</text>
+        </view>
+    </view>
+</view>

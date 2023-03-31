@@ -1,6 +1,7 @@
 {
     "usingComponents": {
         "brand":"../../componets/btn/brand",
-        "LadderDiagram":"../../componets/LadderDiagram/LadderDiagram"
+        "LadderDiagram":"../../componets/LadderDiagram/LadderDiagram",
+        "Drawer":"../../componets/Drawer/Drawer"
     }
 }

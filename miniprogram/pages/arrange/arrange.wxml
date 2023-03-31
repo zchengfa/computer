@@ -1,2 +1,12 @@
 <!--pages/arrange/arrange.wxml-->
-<text>搭配</text>
+<view class="arrange-container">
+    <scroll-view scroll-y="true" class="scroll">
+        <view class="arrange-item" wx:for="{{arrangeMenu}}" wx:key="index">
+            <text class="hardware-type hardware">{{item}}</text>
+            <text class="hardware-desc hardware">请选配{{item}}</text>
+            <view class="select-box hardware">
+                <image class="search" src="../../images/search.png" mode="aspectFit"/>
+            </view>
+        </view>
+    </scroll-view>
+</view>

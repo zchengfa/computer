@@ -1,11 +1,12 @@
 // pages/arrange/arrange.ts
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        arrangeMenu:<string[]>['CPU','主板','显卡','内存','固态','显示器','散热','电源','机箱','风扇']
     },
 
     /**

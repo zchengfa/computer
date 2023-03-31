@@ -6,7 +6,7 @@
             <view class="Ladder-diagram-item {{item.brand}}" wx:for="{{rankData}}" wx:key="index">
                 <view class="text-box box-{{item.brand}}">
                     <view style="width: {{item.progress + '%'}}; transition: width .5s ease-in;background: {{(item.brand === 'intel' || item.brand === 'NVIDIA') ?leftBgColor : rightBgColor}}" class="text-fa {{item.brand}}-text-{{index}} brand-box brand-box-{{index}}" data-el="{{item.brand}}-text-{{index}}" data-width="{{item.progress}}">
-                        <text class="brand-{{item.brand}}">{{item.text}}</text>
+                        <text class="brand-{{item.brand}}" capture-bind:tap="textDescription">{{item.text}}</text>
                     </view>
                 </view>
             </view>
@@ -21,5 +21,5 @@
             </view>
         </view>
     </scroll-view>
-    <BackTop bindtap="backTop" class="back-top" backImage="/images/back_top.png"></BackTop>
+    <BackTop wx:if="{{scrollTop > backTopThreshold}}" bindtap="backTop" class="back-top" backImage="/images/back_top.png"></BackTop>
 </view>

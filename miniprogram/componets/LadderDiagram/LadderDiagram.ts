@@ -19,6 +19,10 @@ Component({
         multiColor:{
             type:Object,
             value:{}
+        },
+        backTopThreshold:{
+            type:Number,
+            value:200
         }
     },
 
@@ -46,7 +50,9 @@ Component({
      * 组件的方法列表
      */
     methods: {
-      
+        textDescription(){
+            this.triggerEvent('description')
+        },
         backTop(){
             if(this.data.queryIndex !== 0){
                 this.setData({
@@ -104,7 +110,8 @@ Component({
                     canScroll:true
                 })
             }
-            else if(this.data.touchBeginY === e.changedTouches[0].pageY){
+            //只触摸不移动，或者移动不超过40就不做任何操作
+            else if(this.data.touchBeginY === e.changedTouches[0].pageY || Math.abs(e.changedTouches[0].pageY - this.data.touchBeginY) < 40){
                 return
             }
             else{

@@ -13,7 +13,8 @@ Page({
         leftBgColor:<string>'linear-gradient(to right, #446fe4 , #0e54a5)',
         rightBgColor:<string>'linear-gradient(to right, #b62b15 , #ca6b5c)',
         showLabel:<boolean>true,
-        btnArray:<btn[]>[{"name":"intel","btnColor":"#6685dc"},{"name":"AMD","btnColor":"#e44c33"}]
+        btnArray:<btn[]>[{"name":"intel","btnColor":"#6685dc"},{"name":"AMD","btnColor":"#e44c33"}],
+        showDrawer:<boolean>false
     },
     alterData:function(index:number = 0,direction:number = 1) {
         //console.log(this.data.rankData)
@@ -53,11 +54,21 @@ Page({
        
     },
     changeScoreRatio(e:any){
-        this.alterData(e.detail.index,e.detail.direction,e.detail.els)
+        this.alterData(e.detail.index,e.detail.direction)
        
     },
     backStatus(){
         this.alterData()
+    },
+    description(){
+        this.setData({
+            showDrawer:true
+        })
+    },
+    closeDrawer(){
+        this.setData({
+            showDrawer:false
+        })
     },
     /**
      * 生命周期函数--监听页面加载
