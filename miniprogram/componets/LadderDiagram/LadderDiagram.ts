@@ -306,7 +306,8 @@ Component({
                'linear-gradient(to right, #920e36, #8e1034, #8b1231, #87142f, #84152d, #87182f, #8a1a30, #8d1d32, #982238, #a2273e, #ad2c45, #b8314b)',
                'linear-gradient(to right, #a84b16, #ac5217, #b05a17, #b36119, #b7681a, #b86d1c, #b8711e, #b97620, #b77922, #b57d25, #b48028, #b2832b)',
                'linear-gradient(to right, #0a2b77, #042c84, #022d91, #042d9e, #0d2cab, #0837b5, #0342be, #004dc7, #0061c9, #0072c5, #007fbc, #2b8bb2)',
-               'linear-gradient(to right, #55085d, #5f0a6a, #690d77, #731085, #7d1393, #83189c, #891ca6, #8f21af, #9227b5, #962dba, #9933c0, #9c38c6)'
+               'linear-gradient(to right, #55085d, #5f0a6a, #690d77, #731085, #7d1393, #83189c, #891ca6, #8f21af, #9227b5, #962dba, #9933c0, #9c38c6)',
+               'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)'
             ]
             , brandColor:any = {}
            if(this.data.brandNumber > 2 && Object.keys(this.properties.multiColor).length !== brandArr.length){

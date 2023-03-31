@@ -9,4 +9,5 @@
             </view>
         </view>
     </scroll-view>
+    <Settle tip="{{tip}}"></Settle>
 </view>

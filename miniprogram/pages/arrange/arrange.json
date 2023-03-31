@@ -1,3 +1,5 @@
 {
-    "usingComponents": {}
+    "usingComponents": {
+        "Settle":"../../componets/Settle/Settle"
+    }
 }

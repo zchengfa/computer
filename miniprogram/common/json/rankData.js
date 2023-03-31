@@ -1781,7 +1781,7 @@ const phone_cpu = [
         "brand":"Qualcomm",
         "text":"高通骁龙 835(MSM8998)",
         "rank":57,
-        "score":984460
+        "score":240000
     },
     {
         "brand":"MediaTek",

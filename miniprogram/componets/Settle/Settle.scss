@@ -1,0 +1,62 @@
+/* componets/Settle/Settle.wxss */
+@import '../../common//scss/common.scss';
+.settle-box{
+    position: absolute;
+    bottom: env(safe-area-inset-bottom);
+    left: 0;
+    width: 100%;
+    transform: translateY(-48px);
+    z-index: 1000;
+    .settle-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10rpx 0;
+        font-size: $minFontSize;
+        background-color: $yellow;
+        text-align: left;
+        text-indent: 20rpx;
+        .btn{
+            margin-left: 0;
+            margin-right: 20rpx;
+            padding: 0;
+            width: auto;
+            font-size: $minFontSize;
+            background-color: transparent;
+            color: $intelColor;
+            font-weight: normal;
+        }
+        .tip{
+            color: $AMDColor;
+        }
+    }   
+    .settle-bottom{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10rpx 20rpx;
+        background-color: #fff;
+        .btn{
+            margin: 0 0 0 30rpx;
+            padding: 20rpx 30rpx;
+            width: auto;
+            font-size: $middleFontSize;
+            color: #fff;
+            font-weight: normal;
+            border-radius: 20px;
+            background-color: rgb(196, 29, 29);
+        }
+        .price-label{
+            font-size: $middleFontSize;
+        }
+        .price-box{
+            color: rgb(196, 29, 29);
+            .charactor,.float-price{
+                font-size: $minFontSize;
+            }
+            .int-price{
+                font-size: 18px;
+            }
+        }
+    }
+}

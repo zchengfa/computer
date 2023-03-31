@@ -1,0 +1,17 @@
+<!--componets/Settle/Settle.wxml-->
+<view class="settle-box">
+    <view class="settle-top">
+        <text class="tip">{{tip}}</text>
+        <button class="btn" bindtap="clear">清空配置单</button>
+    </view>
+    <view class="settle-bottom">
+        <label for="price" class="price-label">总价：</label>
+        <view id="price" class="price-box">
+            <text class="charactor">￥</text>
+            <text class="int-price">0</text>
+            <text class="charactor">.</text>
+            <text class="float-price">00</text>
+        </view>
+        <button class="btn">保存装机单</button>
+    </view>
+</view>
