@@ -7,7 +7,8 @@ Page({
      */
     data: {
         arrangeMenu:<string[]>['CPU','主板','显卡','内存','固态','显示器','散热','电源','机箱','风扇'],
-        tip:<string>'总价为实际价格，无（装机或利润）价格，请放心选择。'
+        tip:<string>'总价为实际价格，无（装机或利润）价格，请放心选择。',
+        isShowSettle:<boolean>true
     },
 
     /**

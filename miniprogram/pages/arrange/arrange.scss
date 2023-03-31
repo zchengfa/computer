@@ -1,12 +1,18 @@
 @import '../../common//scss//common.scss';
 /* pages/arrange/arrange.wxss */
+
 .arrange-container{
     width: 100%;
     height: calc(100vh - 82px);
     .scroll{
         width: 100%;
-        height: 100%;
         background-color: $lightGrayColor;
+    }
+    .diactiveHeight{
+        height: 100%;
+    }
+    .activeHeight{
+        height: calc(100% - 75px);
     }
     .arrange-item{
         display: flex;
