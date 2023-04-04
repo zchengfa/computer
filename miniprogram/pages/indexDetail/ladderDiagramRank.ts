@@ -10,21 +10,25 @@ Page({
      */
     data: {
         rankData:<rankArr[]>[],
+        allData:<rankArr[]>[],
         leftBgColor:<string>'linear-gradient(to right, #446fe4 , #0e54a5)',
         rightBgColor:<string>'linear-gradient(to right, #b62b15 , #ca6b5c)',
         showLabel:<boolean>true,
         btnArray:<btn[]>[{"name":"intel","btnColor":"#6685dc"},{"name":"AMD","btnColor":"#e44c33"}],
-        showDrawer:<boolean>false
+        showDrawer:<boolean>false,
+        dataNumber:<number>20,
+        loadCount:<number>0,
+        hadMore:<boolean>true
     },
     alterData:function(index:number = 0,direction:number = 1) {
-        //console.log(this.data.rankData)
+       
         let _cpuData:rankArr[] = JSON.parse(JSON.stringify(this.data.rankData))
         let maxScore:number = 0
         
-        if(direction){
+        if(direction && index < _cpuData.length){
             maxScore = _cpuData[index]['score']
         }
-        else{
+        else if(!direction && index < _cpuData.length){
            if(index > 0){
                 maxScore = _cpuData[index - 1]['score']
            }
@@ -35,14 +39,15 @@ Page({
         }
         _cpuData.map((item:any,itemIndex:number)=>{
             
-            itemIndex >= index ? item.progress = Math.floor((item.score/maxScore)*96) : item.progress = 0
+            itemIndex >= index ? item.progress = Math.floor((item.score/maxScore)*96) : null
             item.canAnimate = true 
             item.rank = itemIndex + 1
         })
 
         this.setData({
             rankData:_cpuData
-        })  
+        }) 
+       console.log(this.data.rankData)
     },
     changeAniStatus(e:any){
        
@@ -57,8 +62,19 @@ Page({
         this.alterData(e.detail.index,e.detail.direction)
        
     },
-    backStatus(){
+    backStatus(e:any){
         this.alterData()
+        let arr:any[] = [...e.detail.queryArr]
+        arr.map((item:any)=>{
+            let child = this.selectComponent('#ladder-diagram')
+           
+            child.animate('.'+item.dataset.el,[
+                { width: 0, opacity:0 },
+                { width: item.dataset.width + '%', opacity:1 }  
+            ],300)
+           
+        })
+       
     },
     description(){
         this.setData({
@@ -70,6 +86,31 @@ Page({
             showDrawer:false
         })
     },
+    loadMore(e:any){
+        
+        if(this.data.rankData.length !== this.data.allData.length){
+            this.data.loadCount ++ 
+        
+            let arr:any[] = this.data.rankData , allArr:any[] = JSON.parse(JSON.stringify(this.data.allData))
+            arr.push(...allArr.splice(e.detail.lastIndex , this.data.dataNumber))
+           
+            this.setData({
+                rankData:arr,
+                hadMore:true
+            })
+            this.alterData(this.data.dataNumber * this.data.loadCount)
+        }
+        else{
+            this.setData({
+                hadMore:false
+            })
+        }
+       let timer = setTimeout(()=>{
+            wx.hideLoading()
+            clearTimeout(timer)
+       },500)
+        
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -78,36 +119,41 @@ Page({
        switch (options.type) {
            case 'desktop_cpu':
                this.setData({
-                   rankData:desktop_cpu,
+                   allData:desktop_cpu,
                })
                break;
            case 'desktop_Gpu':
                this.setData({
-                   rankData:desktop_Gpu,
+                   allData:desktop_Gpu,
                    leftBgColor: 'linear-gradient(to right, #09884d, #198444, #22803b, #297b31, #2f7728, #307724, #307720, #31771c, #2d7b1d, #287f1e, #22841f, #198820)',  
                    btnArray:[{"name":"NVIDIA","btnColor":"#29a632"},{"name":"AMD","btnColor":"#ca6b5c"}]
                })
                break;
            case 'notebook_cpu':
                this.setData({
-                   rankData:notebook_cpu,
+                   allData:notebook_cpu,
                })
                break;  
            case 'phone_cpu':
                this.setData({
-                   rankData:phone_cpu,
+                   allData:phone_cpu,
                    showLabel:false
                })
                break;
            case 'phone_Gpu':
                this.setData({
-                   rankData:phone_cpu,
+                   allData:phone_cpu,
                    showLabel:false
                })
                break;             
            default:
-               return        
+               return   
        }
+
+       //首次只显示15条数据
+       this.setData({
+            rankData:this.data.allData.slice(0,this.data.dataNumber)
+       })    
     },
 
     /**

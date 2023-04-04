@@ -8,6 +8,10 @@ Component({
             type:Array,
             value:[]   
         },
+        hadMore:{
+            type:Boolean,
+            value:false
+        },
         leftBgColor:{
             type:String,
             value:''
@@ -50,6 +54,21 @@ Component({
      * 组件的方法列表
      */
     methods: {
+        //加载更多
+        loadMore(){
+            wx.showLoading({
+                title:'加载中...'
+            })
+            this.triggerEvent('loadMore',{'lastIndex':this.properties.rankData.length})
+            const query = wx.createSelectorQuery().in(this).selectAll('.brand-box')
+            query.boundingClientRect((res:any)=>{
+               
+                this.setData({
+                    queryArr:Array.from(res)
+                })
+               
+            }).exec()
+        },
         textDescription(){
             this.triggerEvent('description')
         },
@@ -64,21 +83,16 @@ Component({
                        scrollTop:0
                    })
                }
-               let arr = this.data.queryArr.slice(0,this.data.queryIndex)
-               
-               arr.map((item:any,index)=>{
-                   this.animate('.'+item.dataset.el,[
-                      { width: 0, opacity:0 },
-                      { width: this.data.queryArr[index].dataset.width + '%', opacity:1 }   
-                   ],300)
-                   
-               })
+
+            
+               this.triggerEvent('backStatus',{'index':this.data.queryIndex,'queryArr':this.data.queryArr.slice(0,this.data.queryIndex)})
+
                let timer = setTimeout(()=>{
                    this.setData({
                        canScroll:false,
                        queryIndex:0
                    })
-                   this.triggerEvent('backStatus')
+                   
                   
                    clearTimeout(timer)
                },0)
@@ -139,7 +153,7 @@ Component({
                             })  
                             this.triggerEvent('changeScoreRatio',{'index':this.data.queryIndex,'direction':1}) 
                         }.bind(this))
-                       
+                        
                     }
                     else{
                         this.setData({
@@ -148,20 +162,15 @@ Component({
                             firstShow:false
                         })   
                     }
-                    //监听可视区域的元素，看最后一个是否出现在可视区
-                    const observer = wx.createIntersectionObserver(this,{
-                        thresholds:[.8],
-                        observeAll:true
-                    })
-
-                    observer.relativeTo('.scroll').observe('.brand-box',(res:any)=>{
-                        if(res.dataset.el === this.data.queryArr[this.data.queryArr.length - 1].dataset.el){
-                            this.setData({
-                                lastShow:true
-                            })
+                    //查看最后一个是否出现在可视区
+                    const query = wx.createSelectorQuery().in(this).select('.' + this.data.queryArr[this.data.queryArr.length - 1].dataset.el)
+                    query.boundingClientRect((res:any)=>{
+                       
+                        if(res.top < 800){
+                            (!this.data.lastShow && this.properties.hadMore) ? this.loadMore() : null;
+                            (!this.data.lastShow && !this.properties.hadMore && res.top < 750) ? this.setData({lastShow:true}) : null
                         }
-                    })
-                   
+                    }).exec()
                 }
                 else{
                     if(!this.data.firstShow){
@@ -182,7 +191,6 @@ Component({
                                 canScroll:false
                             }) 
                         }.bind(this))
-                       
                     }
                     else{
                         this.setData({
@@ -255,7 +263,7 @@ Component({
                                         }) 
                                         
                                     }.bind(this))
-                                
+                                   
                                     this.triggerEvent('changeAniStatus',{
                                         index:this.data.queryIndex - 1,
                                         status:true
@@ -284,12 +292,14 @@ Component({
                this.setData({
                    queryArr:Array.from(res)
                })
+               
                this.setData({
                    distance:this.data.queryArr[1].top - this.data.queryArr[0].top,
                    paddingTop:this.data.queryArr[1].top - this.data.queryArr[0].top - this.data.queryArr[0].height
                })
-           
+              console.log(this.data.queryArr)
            }).exec()
+           
 
            //获取数据中的品牌数
            let brandArr:String[] = []
@@ -324,11 +334,10 @@ Component({
        }
         
     },
-    pageLifetimes:{
-        show(){
+    lifetimes:{
+        ready(){
             this.getBoxInfo()
-
-           
+            //下一步：优化动画（宽度不准确）
         }
     }
 })
