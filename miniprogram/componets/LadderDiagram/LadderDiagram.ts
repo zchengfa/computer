@@ -154,7 +154,7 @@ Component({
                                 firstShow:false
                             })  
                             
-                            this.triggerEvent('changeScoreRatio',{'index':this.data.queryIndex,'direction':1}) 
+                            this.triggerEvent('changeScoreRatio',{'index':this.data.queryIndex}) 
                            
                         }.bind(this))
                         
@@ -194,7 +194,7 @@ Component({
                                 canScroll:false
                             }) 
                             this.clearAnimation('.'+ this.data.queryArr[this.data.queryIndex].dataset.el)
-                            this.triggerEvent('changeScoreRatio',{'index':this.data.queryIndex,'direction':0})
+                            this.triggerEvent('changeScoreRatio',{'index':this.data.queryIndex})
                         }.bind(this))
                        
                     }

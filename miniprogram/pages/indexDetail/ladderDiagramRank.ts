@@ -20,7 +20,7 @@ Page({
         loadCount:<number>0,
         hadMore:<boolean>true
     },
-    alterData:function(index:number = 0,direction:number = 1) {
+    alterData:function(index:number = 0) {
        
         let _cpuData:rankArr[] = JSON.parse(JSON.stringify(this.data.rankData))
         let maxScore:number = 0
@@ -49,7 +49,7 @@ Page({
        
     },
     changeScoreRatio(e:any){
-        this.alterData(e.detail.index,e.detail.direction)
+        this.alterData(e.detail.index)
        
     },
     backStatus(e:any){

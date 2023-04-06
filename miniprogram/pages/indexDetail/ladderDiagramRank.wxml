@@ -1,6 +1,6 @@
 <!--pages/indexDetail/desktopCPU.wxml-->
 <view class="rank-container">
     <brand updateTime="2023-03-10" btnArray="{{btnArray}}" showLabel="{{showLabel}}"></brand>
-    <LadderDiagram id="ladder-diagram" rankData="{{rankData}}" leftBgColor="{{leftBgColor}}" rightBgColor="{{rightBgColor}}" backTopThreshold="100" hadMore="{{hadMore}}"  bindchangeAniStatus="changeAniStatus" bindchangeScoreRatio="changeScoreRatio" bindbackStatus="backStatus" binddescription="description" bindloadMore="loadMore"></LadderDiagram>
+    <LadderDiagram id="ladder-diagram" rankData="{{rankData}}" leftBgColor="{{leftBgColor}}" rightBgColor="{{rightBgColor}}" backTopThreshold="400" hadMore="{{hadMore}}"  bindchangeAniStatus="changeAniStatus" bindchangeScoreRatio="changeScoreRatio" bindbackStatus="backStatus" binddescription="description" bindloadMore="loadMore"></LadderDiagram>
     <Drawer class="drawer" wx:if="{{showDrawer}}" bindcloseDrawer="closeDrawer"></Drawer>
 </view>
