@@ -24,30 +24,20 @@ Page({
        
         let _cpuData:rankArr[] = JSON.parse(JSON.stringify(this.data.rankData))
         let maxScore:number = 0
-        
-        if(direction && index < _cpuData.length){
-            maxScore = _cpuData[index]['score']
-        }
-        else if(!direction && index < _cpuData.length){
-           if(index > 0){
-                maxScore = _cpuData[index - 1]['score']
-           }
-           else{
-                maxScore = _cpuData[index]['score']
-           } 
-           
-        }
+        maxScore = _cpuData[index]['score']
+
         _cpuData.map((item:any,itemIndex:number)=>{
             
             itemIndex >= index ? item.progress = Math.floor((item.score/maxScore)*96) : null
             item.canAnimate = true 
             item.rank = itemIndex + 1
+           
         })
 
         this.setData({
             rankData:_cpuData
         }) 
-       console.log(this.data.rankData)
+        
     },
     changeAniStatus(e:any){
        
@@ -64,17 +54,19 @@ Page({
     },
     backStatus(e:any){
         this.alterData()
-        let arr:any[] = [...e.detail.queryArr]
-        arr.map((item:any)=>{
+        
+        let arr:any[] = [...e.detail.queryArr] 
+        arr.map((item:any,itemIndex:number)=>{
             let child = this.selectComponent('#ladder-diagram')
            
             child.animate('.'+item.dataset.el,[
                 { width: 0, opacity:0 },
-                { width: item.dataset.width + '%', opacity:1 }  
-            ],300)
+                { width: this.data.rankData[itemIndex].progress + '%', opacity:1 }  
+            ],300,function(){
+                child.clearAnimation('.'+ arr[itemIndex].dataset.el)
+            })
            
         })
-       
     },
     description(){
         this.setData({
@@ -153,7 +145,8 @@ Page({
        //首次只显示15条数据
        this.setData({
             rankData:this.data.allData.slice(0,this.data.dataNumber)
-       })    
+       }) 
+    
     },
 
     /**

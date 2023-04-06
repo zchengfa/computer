@@ -71,6 +71,7 @@ Component({
         },
         textDescription(){
             this.triggerEvent('description')
+           
         },
         backTop(){
             if(this.data.queryIndex !== 0){
@@ -85,7 +86,8 @@ Component({
                }
 
             
-               this.triggerEvent('backStatus',{'index':this.data.queryIndex,'queryArr':this.data.queryArr.slice(0,this.data.queryIndex)})
+               this.triggerEvent('backStatus',{'index':this.data.queryIndex,'queryArr':this.data.queryArr})
+               
 
                let timer = setTimeout(()=>{
                    this.setData({
@@ -142,7 +144,7 @@ Component({
                     if(!this.data.lastShow){
                         
                         this.animate('.'+ this.data.queryArr[this.data.queryIndex].dataset.el,[
-                            { width: this.data.queryArr[this.data.queryIndex].dataset.width + '%', opacity:1 },
+                            { width: this.properties.rankData[this.data.queryIndex].progress + '%', opacity:1 },
                             { width: 0, opacity:0 }
                         ],300,function (this:any) {
                             this.setData({
@@ -151,7 +153,9 @@ Component({
                                 queryIndex: this.data.queryIndex + 1,
                                 firstShow:false
                             })  
+                            
                             this.triggerEvent('changeScoreRatio',{'index':this.data.queryIndex,'direction':1}) 
+                           
                         }.bind(this))
                         
                     }
@@ -180,17 +184,19 @@ Component({
                                 queryIndex:this.data.queryIndex - 1
                             })
                        }
-                       this.triggerEvent('changeScoreRatio',{'index':this.data.queryIndex,'direction':0})
-                       
+                      
                         this.animate('.'+ this.data.queryArr[this.data.queryIndex].dataset.el,[
                             { width: 0, opacity:0 },
-                            { width: this.data.queryArr[this.data.queryIndex].dataset.width + '%', opacity:1 }
+                            { width: this.properties.rankData[this.data.queryIndex].progress + '%', opacity:1 }
                         ],300,function (this:any) {
                             this.setData({
                                 lastShow:false,
                                 canScroll:false
                             }) 
+                            this.clearAnimation('.'+ this.data.queryArr[this.data.queryIndex].dataset.el)
+                            this.triggerEvent('changeScoreRatio',{'index':this.data.queryIndex,'direction':0})
                         }.bind(this))
+                       
                     }
                     else{
                         this.setData({
@@ -221,7 +227,7 @@ Component({
                             if(this.properties.rankData[this.data.queryIndex].canAnimate){
                             
                                 this.animate('.'+ this.data.queryArr[this.data.queryIndex].dataset.el,[
-                                    { width: this.data.queryArr[this.data.queryIndex].dataset.width + '%', opacity:1 },
+                                    { width: this.properties.rankData[this.data.queryIndex].progress + '%', opacity:1 },
                                     { width: 0, opacity:0 }
                                 ],300,function (this:any) {
                                     this.setData({
@@ -254,7 +260,7 @@ Component({
                                 
                                     this.animate('.'+ this.data.queryArr[this.data.queryIndex - 1].dataset.el,[
                                         { width: 0, opacity:0 },
-                                        { width: this.data.queryArr[this.data.queryIndex].dataset.width + '%', opacity:1 }                                   
+                                        { width: this.properties.rankData[this.data.queryIndex].progress + '%', opacity:1 }                                   
                                     ],300,function (this:any) {
                                         this.setData({
                                             scrollTop:(this.data.queryIndex - 1) * this.data.distance,
@@ -297,7 +303,7 @@ Component({
                    distance:this.data.queryArr[1].top - this.data.queryArr[0].top,
                    paddingTop:this.data.queryArr[1].top - this.data.queryArr[0].top - this.data.queryArr[0].height
                })
-              console.log(this.data.queryArr)
+             // console.log(this.data.queryArr)
            }).exec()
            
 
@@ -337,7 +343,6 @@ Component({
     lifetimes:{
         ready(){
             this.getBoxInfo()
-            //下一步：优化动画（宽度不准确）
         }
     }
 })
