@@ -1,5 +1,8 @@
 @import '../../common/scss/common.scss';
 /* componets/Drawer/Drawer.wxss */
+.actived{
+    color: $AMDColor;
+}
 .drawer-container{
     position: relative;
     width: 100%;
@@ -8,7 +11,8 @@
     z-index: 1000;
     .drawer-box{
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: flex-start;
         align-items: center;
         position: absolute;
         bottom:0;
@@ -17,10 +21,66 @@
         height: 0;
         border-radius: 30rpx;
         background-color: #fff;
+        .title-box{
+            padding: 20rpx ;
+        }
+        .title-box{
+            width: 100%;
+            text-align: center;
+            border-bottom: 1px solid $lightGrayColor;
+        }
+        .filter-box{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            font-size: $middleFontSize;
+            .left-box,.right-box{
+                padding: 20rpx;
+                width: 200rpx;
+                text-align: center;
+            }
+            .box-img{
+                padding: 0 10rpx;
+                width: 20rpx;
+                height: 20rpx;
+            }
+        }
+        .filter-detail-box{
+            width: 100%;
+            .filter-detail{
+                .filter-item{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 0 auto;
+                    padding: 20rpx;
+                    width: 96%;
+                    font-size: $middleFontSize;
+                    border-bottom: 1px solid $lightGrayColor;
+                    .filter-name{
+                        flex:1;
+                    }
+                    .filter-label{
+                        width: 60rpx;
+                        text-align: center;
+                    }
+                }
+            }
+        }
     }
     .drawer-transition{
         height: 40%;
+       
+    }
+    .drawer-transition-higher{
+        height: 80%;
+    }
+    .drawer-transition,.drawer-transition-higher,.transition-normal{
         transition: height .5s ease-in;
+    }
+    .transition-normal{
+        height: 0;
     }
     .none{
         color: $lightGrayColor;

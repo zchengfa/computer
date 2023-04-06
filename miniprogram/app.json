@@ -31,7 +31,6 @@
         "navigationBarTitleText": "i电脑",
         "navigationBarTextStyle": "white"
     },
-    "style": "v2",
     "sitemapLocation": "sitemap.json",
     "lazyCodeLoading": "requiredComponents"
 }

@@ -1,5 +1,6 @@
 {
     "usingComponents": {
-        "Settle":"../../componets/Settle/Settle"
+        "Settle":"../../componets/Settle/Settle",
+        "Drawer":"../../componets/Drawer/Drawer"
     }
 }

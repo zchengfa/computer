@@ -1,15 +1,15 @@
 {
-  "name": "miniprogram-ts-less-quickstart",
+  "name": "icomputer",
   "version": "1.0.0",
   "description": "",
+  "main": ".eslintrc.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "",
+  "license": "ISC",
   "dependencies": {
-  },
-  "devDependencies": {
-    "miniprogram-api-typings": "^2.8.3-1"
+    "miniprogram-computed": "^4.4.0"
   }
 }

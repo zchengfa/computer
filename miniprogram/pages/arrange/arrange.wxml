@@ -4,10 +4,11 @@
         <view class="arrange-item" wx:for="{{arrangeMenu}}" wx:key="index">
             <text class="hardware-type hardware">{{item}}</text>
             <text class="hardware-desc hardware">请选配{{item}}</text>
-            <view class="select-box hardware">
+            <view class="select-box hardware" bindtap="showDrawer" data-item="{{item}}">
                 <image class="search" src="../../images/search.png" mode="aspectFit"/>
             </view>
         </view>
     </scroll-view>
     <Settle tip="{{tip}}" wx:if="{{isShowSettle}}"></Settle>
+    <Drawer class="drawer" wx:if="{{showDrawer}}" isDetail="{{false}}" bindcloseDrawer="closeDrawer" drawerTitle="{{drawerTitle}}"></Drawer>
 </view>

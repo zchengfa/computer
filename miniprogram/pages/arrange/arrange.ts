@@ -8,9 +8,23 @@ Page({
     data: {
         arrangeMenu:<string[]>['CPU','主板','显卡','内存','固态','显示器','散热','电源','机箱','风扇'],
         tip:<string>'总价为实际价格，无（装机或利润）价格，请放心选择。',
-        isShowSettle:<boolean>true
+        isShowSettle:<boolean>true,
+        showDrawer:<boolean>false,
+        drawerTitle:<string>''
     },
-
+    showDrawer(e:any){
+        
+        let item:string = e.currentTarget.dataset.item
+        this.setData({
+            showDrawer:true,
+            drawerTitle:item
+        })
+    },
+    closeDrawer(){
+        this.setData({
+            showDrawer:false
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
