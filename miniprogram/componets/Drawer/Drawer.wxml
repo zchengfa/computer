@@ -27,18 +27,43 @@
             </view>
         </view>
         <view class="filter-detail-box">
-            <view class="filter-detail" wx:if="{{productTypeSelected}}">
+            <view class="filter-detail {{productTypeSelected ?'detail-actived' : ''}}" wx:if="{{productTypeSelected}}">
                 <view class="filter-item" wx:for="{{productType}}" wx:key="index" catchtap="selected"  data-type="{{item.name}}" data-name="productType">
                     <text class="{{item.isSelected ? 'actived': ''}} filter-name">{{item.name}}</text>
                     <text wx:if="{{item.isSelected}}" class="actived filter-label">√</text>
                 </view>
             </view>
-            <view class="filter-detail" wx:if="{{priceSelected}}">
+            <view class="filter-detail {{priceSelected ?'detail-actived' : ''}}" wx:if="{{priceSelected}}">
                 <view class="filter-item" wx:for="{{price}}" wx:key="index" catchtap="selected" data-type="{{item.name}}" data-name="price">
                     <text class="{{item.isSelected ? 'actived': ''}} filter-name">{{item.name}}</text>
                     <text wx:if="{{item.isSelected}}" class="actived filter-label">√</text>
                 </view>
             </view>
         </view>
+        <scroll-view class="scroll" scroll-y="true" enhanced="true" bounces="false">
+            <view class="scroll-item" wx:for="{{showData}}" wx:key="index" >
+                <view class="item-box">
+                    <view class="left-box">
+                    <image class="img" src="{{item.imagePath}}" mode="aspectFit"/>
+                    </view>
+                    <view class="right-box">
+                        <text class="top box-text">{{item.text}}</text>
+                        <text class="middle box-text">{{item.desc}}</text>
+                        <view class="box-text bottom">
+                            <text class="charactor">￥</text>
+                            <text class="bottom-text ">{{item.price}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="number-box">
+                    <view class="number-button">
+                        <button disabled="{{item.count <=1}}" size="mini" plain="true" class="number-btn" catchtap="operateCount" data-index="{{index}}" data-operation="0">-</button>
+                        <button size="mini" plain="true"  class="number-btn">{{item.count}}</button>
+                        <button size="mini" plain="true"  class="number-btn" catchtap="operateCount"  data-index="{{index}}"  data-operation="1">+</button>
+                    </view>
+                    <button size="mini"  type="warn" class="number-btn" catchtap="choose" data-item="{{currentItem}}" data-index="{{index}}">选择</button>
+                </view>
+            </view>
+        </scroll-view>
     </view>
 </view>

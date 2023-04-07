@@ -1,5 +1,5 @@
 // pages/indexDetail/desktopCPU.ts
-import { desktop_cpu , desktop_Gpu , notebook_cpu , phone_cpu} from '../../common/json/rankData'
+import { desktop_cpu , desktop_Gpu , notebook_cpu , phone_cpu} from '../../common/json/staticData'
 type btn ={
     name:string,
     btnColor:string

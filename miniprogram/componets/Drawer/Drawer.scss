@@ -19,8 +19,11 @@
         left: 0;
         width: 100%;
         height: 0;
-        border-radius: 30rpx;
+        border-radius: 0;
+        border-top-left-radius: 30rpx;
+        border-top-right-radius: 30rpx;          
         background-color: #fff;
+       
         .title-box{
             padding: 20rpx ;
         }
@@ -47,8 +50,15 @@
             }
         }
         .filter-detail-box{
+            position: relative;
             width: 100%;
+            .detail-actived{
+                position: absolute;
+                width: 100%;
+                z-index: 1000;
+            }
             .filter-detail{
+                background-color: #fff;
                 .filter-item{
                     display: flex;
                     justify-content: space-between;
@@ -66,6 +76,114 @@
                         text-align: center;
                     }
                 }
+            }
+        }
+        .scroll{
+            padding-bottom: env(safe-area-inset-bottom);
+            width: 100%;
+            height: calc(100% - 160px);
+            .scroll-item{
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+                justify-content: center;
+                padding: 25rpx 20rpx;
+                .item-box{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+            .img{
+                width: 170rpx;
+                height: 170rpx;
+                border-radius: 15rpx;
+            }
+            .left-box,.right-box{
+                padding: 0 10rpx;
+            }
+            .right-box{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                font-size: $middleFontSize;
+                .top{
+                    max-width: 400rpx;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+                .middle{
+                    display: -webkit-box;
+                    font-size: 12px;
+                    color: gray;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+                .box-text:not(:nth-child(1)){
+                    padding-top: 15rpx;
+                }
+                .bottom{
+                    color: $AMDColor;
+                    font-weight: bold;
+                    .charactor{
+                        font-size: 12px;
+                    }
+                    .bottom-text{
+                        font-size: 15px;
+                    }
+                }
+            }
+            .number-box{
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                .number-button{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right: 30rpx;
+                    .number-btn{
+                        margin: 0;
+                        padding: 0;
+                        width: 60rpx;
+                        height: 50rpx;
+                        line-height: 50rpx;
+                        border: none;
+                        border-radius: 30rpx;
+                        background-color: rgb(243, 241, 241);
+                    }
+                    .number-btn:first-child{
+                        border-top-left-radius: 30rpx;
+                        border-bottom-right-radius: 0;
+                        border-top-right-radius: 0;
+                        border-bottom-left-radius: 30rpx;
+                    }
+                    .number-btn:nth-child(3){
+                        border-top-left-radius: 0;
+                        border-bottom-right-radius: 30rpx;
+                        border-top-right-radius: 30rpx;
+                        border-bottom-left-radius: 0;
+                    }
+                    .number-btn:nth-child(2){
+                        margin: 0 6rpx;
+                        width: 80rpx;
+                        border-radius: 0;
+                    }
+                }
+                .number-btn{
+                    margin: 0;
+                    padding: 0 30rpx;
+                    height: 50rpx;
+                    line-height: 50rpx;
+                    border: none;
+                    border-radius: 30rpx;
+                    font-size: $minFontSize;
+                }
+                
             }
         }
     }

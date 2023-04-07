@@ -1,6 +1,6 @@
 <!--pages/arrange/arrange.wxml-->
 <view class="arrange-container">
-    <scroll-view scroll-y="true" class="scroll {{isShowSettle ? 'activeHeight' : 'diactiveHeight'}}" >
+    <scroll-view scroll-y="true" class="scroll {{isShowSettle ? 'activeHeight' : 'diactiveHeight'}}" enhanced="true" bounces="false">
         <view class="arrange-item" wx:for="{{arrangeMenu}}" wx:key="index">
             <text class="hardware-type hardware">{{item}}</text>
             <text class="hardware-desc hardware">请选配{{item}}</text>
@@ -10,5 +10,5 @@
         </view>
     </scroll-view>
     <Settle tip="{{tip}}" wx:if="{{isShowSettle}}"></Settle>
-    <Drawer class="drawer" wx:if="{{showDrawer}}" isDetail="{{false}}" bindcloseDrawer="closeDrawer" drawerTitle="{{drawerTitle}}"></Drawer>
+    <Drawer class="drawer" wx:if="{{showDrawer}}" currentItem="{{drawerTitle}}" isDetail="{{false}}" bindchooseProduct="chooseProduct" bindcloseDrawer="closeDrawer" drawerTitle="{{drawerTitle}}" data="{{computerData}}"></Drawer>
 </view>

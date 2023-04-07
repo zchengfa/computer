@@ -1,4 +1,13 @@
 // pages/arrange/arrange.ts
+import { computerData } from "../../common/json/staticData";
+interface computerArr {
+    brand:string,
+    text:string,
+    desc:string,
+    price:number,
+    imagePath:string,
+    count?:number
+}
 
 Page({
 
@@ -10,20 +19,39 @@ Page({
         tip:<string>'总价为实际价格，无（装机或利润）价格，请放心选择。',
         isShowSettle:<boolean>true,
         showDrawer:<boolean>false,
-        drawerTitle:<string>''
+        drawerTitle:<string>'',
+        computerData:<computerArr[]>[],
+        hadChooseData:<any>{}
     },
     showDrawer(e:any){
         
-        let item:string = e.currentTarget.dataset.item
+        let item:string = e.currentTarget.dataset.item , data:computerArr[] = [];
+        //@ts-ignore
+        Array.isArray(computerData[item]) ? data = computerData[item] : data = []
+        data.map((item:any)=>{
+            item.count = 1
+        })
+      
         this.setData({
             showDrawer:true,
-            drawerTitle:item
+            drawerTitle:item,
+            computerData:data
         })
+        
     },
     closeDrawer(){
         this.setData({
             showDrawer:false
         })
+    },
+    chooseProduct(e:any){
+        let data = e.detail.product , item = e.detail.item , chooseData = this.data.hadChooseData
+        chooseData[item] = data
+        
+        this.setData({
+            hadChooseData:chooseData
+        })
+        
     },
     /**
      * 生命周期函数--监听页面加载

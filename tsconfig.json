@@ -23,7 +23,7 @@
   },
   "include": [
     "./**/*.ts"
-, "miniprogram/common/json/rankData.js"  ],
+, "miniprogram/common/json/staticData.js"  ],
   "exclude": [
     "node_modules"
   ]
