@@ -140,14 +140,27 @@ Component({
                 })
             } 
             //执行数据筛选程序 
-            ((name === 'productType' && firstF !== type) || (name === 'price' && secondF !== type) ) ? this.filter(this.data.showData,this.data.firstFilter,this.data.secondFilter) : null 
+            ((name === 'productType' && firstF !== type) || (name === 'price' && secondF !== type) ) ? this.setData({showData:this.filter(this.properties.data,this.data.firstFilter,this.data.secondFilter)}) : null 
             
         },
-        filter(data:comData[],confidentOne:string,confidentTwo:string){
+        filter(data:comData[] ,confidentFirst:string = '全部商品',confidentLast:string = '默认排序'){
             //先通过第一个条件筛选一遍数据，再用第二个条件筛选得到最终筛选结果
-            let arr = data
-            //待完善
-            console.log(arr)
+            let arr:comData[] = []  , copyData = JSON.parse(JSON.stringify(data)) , condition = (confidentFirst === '全部商品' && confidentLast === '默认排序') , conditionTwo = (confidentFirst === '全部商品' && confidentLast !== '默认排序');
+
+            condition ? arr = data : arr = data.filter((item:any)=> item.brand === confidentFirst);
+            condition ? arr = copyData : sortArray(confidentLast);
+            
+            if(conditionTwo){
+                arr = copyData
+                sortArray(confidentLast)
+            }
+
+            function sortArray(confident:string){
+                let copyArr:any[] = JSON.parse(JSON.stringify(arr))
+                confident === '价格由低到高' ? copyArr.sort((a,b)=> a.price - b.price) : copyArr.sort((a,b)=> b.price - a.price)
+                arr = copyArr
+            }
+            return arr
         },
         //数量操作 
         operateCount(e:any){
@@ -179,7 +192,8 @@ Component({
                             "brand":dataItem.brand,
                             "count":dataItem.count,
                             "price":dataItem.price,
-                            "text":dataItem.text
+                            "text":dataItem.desc,
+                            "title":dataItem.text
                         },
                         item
                     })

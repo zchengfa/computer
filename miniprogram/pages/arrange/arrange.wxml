@@ -2,13 +2,25 @@
 <view class="arrange-container">
     <scroll-view scroll-y="true" class="scroll {{isShowSettle ? 'activeHeight' : 'diactiveHeight'}}" enhanced="true" bounces="false">
         <view class="arrange-item" wx:for="{{arrangeMenu}}" wx:key="index">
-            <text class="hardware-type hardware">{{item}}</text>
-            <text class="hardware-desc hardware">请选配{{item}}</text>
-            <view class="select-box hardware" bindtap="showDrawer" data-item="{{item}}">
+            <text class="hardware-type hardware">{{item.name}}</text>
+            <text class="hardware-desc hardware" wx:if="{{!item.hadChooseData}}">请选配{{item.name}}</text>
+            <view class="hardware-desc hardware choose-data-box" wx:else>
+               <view class="top">
+                <text class="choose-item brand">{{item.hadChooseData.brand}}</text>
+                <text class="choose-item title">{{item.hadChooseData.title}}</text>
+               </view>
+               <text class="choose-item desc">{{item.hadChooseData.text}}</text>
+                <view class="bottom">
+                    <text class="choose-item price">￥{{item.hadChooseData.price}}</text>
+                    <text class="multi choose-item">*</text>
+                    <text class="choose-item">{{item.hadChooseData.count}}</text>
+                </view>
+            </view>
+            <view class="select-box hardware" bindtap="showDrawer" data-item="{{item.name}}">
                 <image class="search" src="../../images/search.png" mode="aspectFit"/>
             </view>
         </view>
     </scroll-view>
-    <Settle tip="{{tip}}" wx:if="{{isShowSettle}}"></Settle>
+    <Settle tip="{{tip}}" wx:if="{{isShowSettle}}" intPrice="{{intPrice}}" floatPrice="{{floatPrice}}" bindclearConfigList="clearConfigList"></Settle>
     <Drawer class="drawer" wx:if="{{showDrawer}}" currentItem="{{drawerTitle}}" isDetail="{{false}}" bindchooseProduct="chooseProduct" bindcloseDrawer="closeDrawer" drawerTitle="{{drawerTitle}}" data="{{computerData}}"></Drawer>
 </view>

@@ -1,5 +1,6 @@
 // pages/arrange/arrange.ts
 import { computerData } from "../../common/json/staticData";
+
 interface computerArr {
     brand:string,
     text:string,
@@ -10,18 +11,18 @@ interface computerArr {
 }
 
 Page({
-
     /**
      * 页面的初始数据
      */
     data: {
-        arrangeMenu:<string[]>['CPU','主板','显卡','内存','固态','显示器','散热','电源','机箱','风扇'],
+        arrangeMenu:<any[]>[{"name":"CPU"},{"name":"主板"},{"name":"显卡"},{"name":"内存"},{"name":"固态"},{"name":"显示器"},{"name":"散热器"},{"name":"电源"},{"name":"机箱"},{"name":"风扇"}],
         tip:<string>'总价为实际价格，无（装机或利润）价格，请放心选择。',
-        isShowSettle:<boolean>true,
+        isShowSettle:<boolean>false,
         showDrawer:<boolean>false,
         drawerTitle:<string>'',
         computerData:<computerArr[]>[],
-        hadChooseData:<any>{}
+        floatPrice:<string>'00',
+        intPrice:<number>0
     },
     showDrawer(e:any){
         
@@ -45,13 +46,45 @@ Page({
         })
     },
     chooseProduct(e:any){
-        let data = e.detail.product , item = e.detail.item , chooseData = this.data.hadChooseData
-        chooseData[item] = data
-        
-        this.setData({
-            hadChooseData:chooseData
+        let data = e.detail.product , item = e.detail.item , arr = this.data.arrangeMenu;
+
+        arr.map((i:any)=>{
+            if(i.name === item){
+                i.hadChooseData = data
+            }
+        })
+
+        //计算总价
+        let price = 0
+        arr.map((i:any)=>{
+            if(i.hadChooseData){
+                price += i.hadChooseData.price * i.hadChooseData.count
+            }
         })
         
+        //@ts-ignore
+        price.toString().indexOf('.') === -1 ? price = price.toFixed(2) : null;
+
+        let intP = price.toString().substring(0,price.toString().indexOf('.')) , floatP = price.toString().substring(price.toString().indexOf('.') + 1 ,price.toString().length)
+
+        this.setData({
+            arrangeMenu:arr,
+            intPrice:Number(intP),
+            floatPrice:floatP,
+            isShowSettle:true,
+            showDrawer:false
+        })
+    },
+    //清空配置单
+    clearConfigList(){
+        let data = this.data.arrangeMenu
+        data.map((item:any)=>{
+            item.hadChooseData = null
+        })
+        this.setData({
+            arrangeMenu:data,
+            isShowSettle:false
+        })
     },
     /**
      * 生命周期函数--监听页面加载
@@ -76,8 +109,8 @@ Page({
                 selected:1
             })
         }
+        
       },
-
     /**
      * 生命周期函数--监听页面隐藏
      */

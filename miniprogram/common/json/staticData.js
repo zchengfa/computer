@@ -1894,7 +1894,7 @@ const computerData = {
             "brand":"AMD",
             "text":"AMD 锐龙9 7950X 盒装CPU",
             "desc":"16核32线程 睿频至高可达5.7Ghz 170W AM5接口",
-            "price":3899,
+            "price":3899.99,
             "imagePath":"https://img12.360buyimg.com/n2/s270x270_jfs/t1/215894/4/27416/72274/6420fac0Fabd6f66b/9f669f77a6a3d58c.jpg!q70.webp"
         },
         {
@@ -1910,24 +1910,26 @@ const computerData = {
             "desc":"10核16线程 600/700主板平台兼容，D4/5内存支持",
             "price":1399,
             "imagePath":"https://img10.360buyimg.com/n2/s270x270_jfs/t1/120997/29/34389/99586/63fd6e1fF4d5c080f/3d0bef1fa2eab3bc.jpg!q70.webp"
-        },
+        }
+    ],
+    "主板":[
         {
-            "brand":"AMD",
-            "text":"AMD 锐龙9 7950X 盒装CPU",
+            "brand":"技嘉",
+            "text":"主板 锐龙9 7950X 盒装CPU",
             "desc":"16核32线程 睿频至高可达5.7Ghz 170W AM5接口",
             "price":3899,
             "imagePath":"https://img12.360buyimg.com/n2/s270x270_jfs/t1/215894/4/27416/72274/6420fac0Fabd6f66b/9f669f77a6a3d58c.jpg!q70.webp"
         },
         {
-            "brand":"intel",
-            "text":"英特尔 i9-13900K 13代 酷睿",
+            "brand":"华硕",
+            "text":"主板 i9-13900K 13代 酷睿",
             "desc":"24核32线程 睿频至高可达5.8Ghz 36M三级缓存",
             "price":4899,
             "imagePath":"https://img12.360buyimg.com/n2/s270x270_jfs/t1/103091/19/37555/153422/642be5d9Fa725694a/1f44d13f8a2ffc27.jpg!q70.webp"
         },
         {
-            "brand":"intel",
-            "text":"英特尔 i5-13490F 13代 酷睿",
+            "brand":"微星",
+            "text":"主板 i5-13490F 13代 酷睿",
             "desc":"10核16线程 600/700主板平台兼容，D4/5内存支持",
             "price":1399,
             "imagePath":"https://img10.360buyimg.com/n2/s270x270_jfs/t1/120997/29/34389/99586/63fd6e1fF4d5c080f/3d0bef1fa2eab3bc.jpg!q70.webp"

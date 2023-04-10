@@ -12,7 +12,7 @@
         height: 100%;
     }
     .activeHeight{
-        height: calc(100% - 75px);
+        height: calc(100% - 85px);
     }
     .arrange-item{
         display: flex;
@@ -39,6 +39,44 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        .choose-data-box{
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0;
+            font-size: 12px;
+            .choose-item{
+               display: inline-block;
+               height: 16px;
+               max-width: 240px;
+               text-overflow: ellipsis;
+               white-space: nowrap;
+               overflow: hidden; 
+               
+            }
+            .title{
+                color: #000;
+            }
+            .brand{
+                padding: 6rpx;
+                border-radius: 10rpx;
+                background-color: $AMDColor;
+                color: #fff;
+                transform-origin: 0 ;
+                transform: scale(.8) translateY(20%);
+            }
+            .bottom{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $AMDColor;
+                .multi{
+                    margin: 0 4rpx;
+
+                }
+            }
         }
        
     }

@@ -8,9 +8,9 @@
         <label for="price" class="price-label">总价：</label>
         <view id="price" class="price-box">
             <text class="charactor">￥</text>
-            <text class="int-price">0</text>
+            <text class="int-price">{{intPrice}}</text>
             <text class="charactor">.</text>
-            <text class="float-price">00</text>
+            <text class="float-price">{{floatPrice}}</text>
         </view>
         <button class="btn">保存装机单</button>
     </view>
