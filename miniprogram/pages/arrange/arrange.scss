@@ -27,7 +27,8 @@
             height:32rpx
         }
         .hardware{
-            padding: 30rpx;
+            width: 120rpx;
+            text-align: center;
         }
         .hardware-desc{
             flex: 1;
@@ -50,7 +51,7 @@
             .choose-item{
                display: inline-block;
                height: 16px;
-               max-width: 240px;
+               max-width: 210px;
                text-overflow: ellipsis;
                white-space: nowrap;
                overflow: hidden; 
