@@ -65,7 +65,7 @@ Page({
         //@ts-ignore
         price.toString().indexOf('.') === -1 ? price = price.toFixed(2) : null;
 
-        let intP = price.toString().substring(0,price.toString().indexOf('.')) , floatP = price.toString().substring(price.toString().indexOf('.') + 1 ,price.toString().length)
+        let intP = price.toString().substring(0,price.toString().indexOf('.')) , floatP = price.toString().substr(price.toString().indexOf('.') + 1 ,2)
 
         this.setData({
             arrangeMenu:arr,
