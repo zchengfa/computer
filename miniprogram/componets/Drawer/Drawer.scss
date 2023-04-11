@@ -57,6 +57,13 @@
                 width: 100%;
                 z-index: 1000;
             }
+            .filter-item-scroll{
+                width: 100%;              
+                overflow: hidden;
+            }
+            .filter-item-scroll-actived{
+                height: 300px;
+            }
             .filter-detail{
                 background-color: #fff;
                 .filter-item{

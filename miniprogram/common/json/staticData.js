@@ -1894,7 +1894,7 @@ const computerData = {
             "brand":"AMD",
             "text":"AMD 锐龙9 7950X 盒装CPU",
             "desc":"16核32线程 睿频至高可达5.7Ghz 170W AM5接口",
-            "price":3899.99,
+            "price":3899,
             "imagePath":"https://img12.360buyimg.com/n2/s270x270_jfs/t1/215894/4/27416/72274/6420fac0Fabd6f66b/9f669f77a6a3d58c.jpg!q70.webp"
         },
         {
