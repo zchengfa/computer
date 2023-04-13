@@ -69,8 +69,8 @@ Component({
                
             }).exec()
         },
-        textDescription(){
-            this.triggerEvent('description')
+        textDescription(e:any){
+            this.triggerEvent('description',{"rank":e.currentTarget.dataset.rank,"text":e.currentTarget.dataset.text})
            
         },
         backTop(){

@@ -18,7 +18,8 @@ Page({
         showDrawer:<boolean>false,
         dataNumber:<number>20,
         loadCount:<number>0,
-        hadMore:<boolean>true
+        hadMore:<boolean>true,
+        drawerData:<Detail>{}
     },
     alterData:function(index:number = 0) {
        
@@ -68,10 +69,15 @@ Page({
            
         })
     },
-    description(){
+    description(e:any){
+        let data:any = this.data.allData[e.detail.rank -1].detail || {}
+        data.rank = e.detail.rank
+        data.text = e.detail.text
         this.setData({
-            showDrawer:true
+            showDrawer:true,
+            drawerData:data
         })
+       
     },
     closeDrawer(){
         this.setData({
@@ -111,6 +117,7 @@ Page({
        switch (options.type) {
            case 'desktop_cpu':
                this.setData({
+                   //@ts-ignore
                    allData:desktop_cpu,
                })
                break;

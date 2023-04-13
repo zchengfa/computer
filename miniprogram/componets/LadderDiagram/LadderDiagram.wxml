@@ -6,7 +6,7 @@
             <view class="Ladder-diagram-item {{item.brand}}" wx:for="{{rankData}}" wx:key="index">
                 <view class="text-box box-{{item.brand}}">
                     <view style="width: {{item.progress + '%'}}; transition: width .5s ease-in;background: {{(item.brand === 'intel' || item.brand === 'NVIDIA') ?leftBgColor : rightBgColor}}" class="text-fa {{item.brand}}-text-{{index}} brand-box brand-box-{{index}}" data-el="{{item.brand}}-text-{{index}}" data-width="{{item.progress}}">
-                        <text class="brand-{{item.brand}}" capture-bind:tap="textDescription">{{item.text}}</text>
+                        <text class="brand-{{item.brand}}" data-rank="{{item.rank}}" data-text="{{item.text}}" capture-bind:tap="textDescription">{{item.text}}</text>
                     </view>
                 </view>
             </view>
@@ -15,7 +15,7 @@
             <view class="Ladder-diagram-item" wx:for="{{rankData}}" wx:key="index">
                <view class="text-box-side">
                     <view style="width: {{item.progress + '%'}}; transition: width .5s ease-in;background:{{multiBrandBgColor[item.brand]}}" class="text-fa {{item.brand}}-text-{{index}} brand-box brand-box-{{index}}" data-el="{{item.brand}}-text-{{index}}" data-width="{{item.progress}}">
-                        <text class="brand-{{item.brand}} brand-text" capture-bind:tap="textDescription">{{item.text}}</text>
+                        <text class="brand-{{item.brand}} brand-text"  data-rank="{{item.rank}}" data-text="{{item.text}}" capture-bind:tap="textDescription">{{item.text}}</text>
                     </view>
                </view> 
             </view>

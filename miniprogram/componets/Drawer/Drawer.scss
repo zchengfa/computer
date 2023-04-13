@@ -23,7 +23,27 @@
         border-top-left-radius: 30rpx;
         border-top-right-radius: 30rpx;          
         background-color: #fff;
-       
+        .data-box{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-top: 20rpx;
+            width: 90%;
+            height: 90%;
+            font-size: $minFontSize;
+            .data-item{
+                padding-top: 10rpx;
+            }
+            .item-text{
+                padding-bottom: 20rpx;
+                font-size: 16px;
+            }
+            .item-rank{
+                font-size: 20px;
+                color: $AMDColor;
+            }
+        }
         .title-box{
             padding: 20rpx ;
         }

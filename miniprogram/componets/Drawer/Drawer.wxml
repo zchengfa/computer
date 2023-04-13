@@ -1,10 +1,18 @@
 <!--componets/Drawer/Drawer.wxml-->
 <view class="drawer-container" bindtap="close">
     <view class="drawer-box {{transition ? 'drawer-transition' : '.transition-normal'}}" wx:if="{{isDetail}}">
-        <view wx:if="{{Object.keys(drawerData).length}}">
-            <view>
-                产品描述
+        <view wx:if="{{drawerData}}" class="data-box">
+            <text class="data-item item-text">{{drawerData.text}}</text>
+            <view class="data-item">排名：
+                <text class="item-rank">{{drawerData.rank}}</text>
             </view>
+            <text class="data-item">频率：{{drawerData.frequency}}</text>
+            <text class="data-item">工艺：{{drawerData.technology}}</text>
+            <text class="data-item">核心/线程：{{drawerData.core_thread}}</text>
+            <text class="data-item">核显：{{drawerData.Core_graphics}}</text>
+            <text class="data-item">功率：{{drawerData.power}}</text>
+            <text class="data-item">插槽：{{drawerData.slot}}</text>
+            <text class="data-item">二三级缓存：{{drawerData.cache}}</text>
         </view>
         <view wx:else class="none">
             <text>产品数据待完善</text>

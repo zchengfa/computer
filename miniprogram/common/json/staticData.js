@@ -4,43 +4,106 @@ const desktop_cpu =[
         "brand":"AMD",
         "text":"AMD 锐龙 Threadripper PRO 5995WX",
         "rank":1,
-        "score":1878367
+        "score":1878367,
+        "detail":{
+            "frequency":"2.7-4.5GHz",
+            "core_thread":"64/128",
+            "technology":"7nm",
+            "Core_graphics":null,
+            "power":"280W",
+            "slot":"sRWX8",
+            "cache":"32/256M"
+        }
     },
     {
         "brand":"intel",
         "text":"至强W9-3495X",
         "rank":2,
-        "score":1878366
+        "score":1878366,
+        "detail":{
+            "frequency":"大核1.9-4.8GHz 小核NA",
+            "core_thread":"56/112",
+            "technology":"7nm",
+            "Core_graphics":null,
+            "power":"350/420W",
+            "slot":"LGA4677",
+            "cache":"105M"
+        }
     },
     {
         "brand":"intel",
         "text":"至强W9-3475X",
         "rank":3,
-        "score":1878365
+        "score":1878365,
+        "detail":{
+            "frequency":"大核2.2-4.8GHz 小核NA",
+            "core_thread":"36/72",
+            "technology":"7nm",
+            "Core_graphics":null,
+            "power":"300/360W",
+            "slot":"LGA4677",
+            "cache":"82.5M"
+        }
     },
     {
         "brand":"AMD",
         "text":"AMD 锐龙 Threadripper PRO 5975WX",
         "rank":4,
-        "score":1460909
+        "score":1460909,
+        "detail":{
+            "frequency":"3.6-4.5GHz",
+            "core_thread":"32/64",
+            "technology":"7nm",
+            "Core_graphics":null,
+            "power":"280W",
+            "slot":"sRWX8",
+            "cache":"16/128M"
+        }
     },
     {
         "brand":"intel",
-        "text":"至强W7-3475X",
+        "text":"至强W7-3465X",
         "rank":5,
-        "score":1460808
+        "score":1460808,
+        "detail":{
+            "frequency":"大核2.5-4.8GHz 小核NA",
+            "core_thread":"28/56",
+            "technology":"7nm",
+            "Core_graphics":null,
+            "power":"300/360W",
+            "slot":"LGA4677",
+            "cache":"75M"
+        }
     },
     {
         "brand":"AMD",
         "text":"AMD 锐龙 Threadripper PRO 5965WX",
         "rank":6,
-        "score":1460707
+        "score":1460707,
+        "detail":{
+            "frequency":"3.8-4.5GHz",
+            "core_thread":"24/48",
+            "technology":"7nm",
+            "Core_graphics":null,
+            "power":"280W",
+            "slot":"sRWX8",
+            "cache":"12/128M"
+        }
     },
     {
         "brand":"intel",
-        "text":"至强W7-3465",
+        "text":"至强W7-3455",
         "rank":7,
-        "score":1460606
+        "score":1460606,
+        "detail":{
+            "frequency":"大核2.5-4.8GHz 小核NA",
+            "core_thread":"24/48",
+            "technology":"7nm",
+            "Core_graphics":null,
+            "power":"270/324W",
+            "slot":"LGA4677",
+            "cache":"67.5M"
+        }
     },
     {
         "brand":"AMD",

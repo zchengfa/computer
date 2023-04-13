@@ -20,5 +20,18 @@ interface rankArr {
     rank:number,
     score:number,
     progress?:number,
-    canAnimate?:boolean
+    canAnimate?:boolean,
+    detail?:Detail | undefined
+}
+
+interface Detail {
+    frequency:String,
+    core_thread:String,
+    technology:String,
+    Core_graphics:String,
+    power:String,
+    slot:String,
+    cache:String,
+    rank?:Number,
+    text?:String
 }
